@@ -6,51 +6,23 @@ import static org.junit.Assert.*;
 
 public class SongsTest {
 
-    @Test
-    public void getSong() {
+    private Songs newSong(){
+        return new Songs("pokea sifa","zilipendwa","Sauti Tamu","Nitakwenda mimi mwenyewe",1);
     }
 
     @Test
-    public void setSong() {
+    public void initializeCorrectly(){
+        Songs songs = newSong();
+        assertTrue(songs instanceof Songs);
     }
 
     @Test
-    public void getAlbum() {
-    }
-
-    @Test
-    public void setAlbum() {
-    }
-
-    @Test
-    public void getChoir() {
-    }
-
-    @Test
-    public void setChoir() {
-    }
-
-    @Test
-    public void getLyrics() {
-    }
-
-    @Test
-    public void setLyrics() {
-    }
-
-    @Test
-    public void getId() {
-    }
-
-    @Test
-    public void setId() {
-    }
-
-    @Test
-    public void testEquals() {
-    }
-
-    @Test
-    public void testHashCode() {
+    public void getMethodsWorkCorrectly(){
+        Songs songs = newSong();
+        assertEquals("pokea sifa",songs.getSong());
+        assertEquals("zilipendwa",songs.getAlbum());
+        assertEquals("Sauti Tamu",songs.getChoir());
+        assertEquals("Nitakwenda mimi mwenyewe",songs.getLyrics());
+        assertEquals(1,songs.getId());
     }
 }
