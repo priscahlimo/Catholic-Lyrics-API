@@ -14,7 +14,7 @@ public class songsImplementationDao implements songsDao {
 
     @Override
     public void add(Songs songs) {
-        String sql = "INSERT INTO Songs (song, album, choir, lyrics) VALUES (:song, :album, :choir, :lyrics)"; //if you change your model, be sure to update here as well!
+        String sql = "INSERT INTO songs (song, album, choir, lyrics) VALUES (:song, :album, :choir, :lyrics)"; //if you change your model, be sure to update here as well!
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(songs)
@@ -28,7 +28,7 @@ public class songsImplementationDao implements songsDao {
 
     @Override
     public Songs findById(int id) {
-        String sql = "SELECT * from Songs WHERE id=:id;";
+        String sql = "SELECT * from songs WHERE id=:id;";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("id", id)
