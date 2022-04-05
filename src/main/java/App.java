@@ -29,13 +29,25 @@ public class App {
 
         songsDao = new songsImplementationDao(DB.sql2o);
 
+        get("/", "application/json", (req, res) -> {
+            System.out.println(songsDao.allSongs());
 
-        get("/", (request, response) -> {
+            if(songsDao.allSongs().size() > 0){
+                return gson.toJson(songsDao.allSongs());
+            }
 
-            Map<String, Object> models = new HashMap<>();
-            models.put("View all songs", "/songs/new");
-            return gson.toJson(models);
+            else {
+                return "{\"message\":\"sorry there are currently listed in the database.\"}";
+            }
         });
+
+
+//        get("/", (request, response) -> {
+//
+//            Map<String, Object> models = new HashMap<>();
+//            models.put("View all songs", "/songs");
+//            return gson.toJson(models);
+//        });
 
 
         post("/songs/new", "application/json", (request, response) -> {
