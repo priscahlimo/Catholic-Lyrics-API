@@ -33,7 +33,7 @@ public class App {
         get("/", (request, response) -> {
 
             Map<String, Object> models = new HashMap<>();
-            models.put("View all songs", "/songs");
+            models.put("View all songs", "/songs/new");
             return gson.toJson(models);
         });
 
